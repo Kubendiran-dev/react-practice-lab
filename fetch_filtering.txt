@@ -1,0 +1,25 @@
+1.How do you fetch products from an API using useEffect with async/await?
+
+
+You fetch data inside useEffect by defining an async function inside it (because the effect itself can’t be async), calling the API with fetch or axios, awaiting the response, converting it to JSON, and storing it in state using setProducts. The empty dependency array ([]) ensures the fetch runs only once when the component mounts.
+
+2.Controlled <select>:
+
+A <select> whose value is controlled by React state via value and onChange.
+
+3.Why do we keep the selected category in state?
+
+The selected category is stored in state so React can track user interaction and trigger re-renders when it changes. This state drives filtering logic and ensures the UI stays in sync with the user’s selection.
+
+5.How do you filter products based on the selected category?
+
+Filtering is done using the filter() method on the products array, returning either all products when the category is "all" or only those whose category matches the selected value. This logic usually runs during render or inside a derived variable.
+
+
+8.How do you render <option> elements dynamically from API data?
+
+You map over the categories array fetched from the API and return an <option> for each item, assigning a unique key and setting the value attribute to match the category name or ID.
+
+10.How do you handle “No products found” after filtering?
+
+After filtering, you check the length of the filtered products array. If it’s zero, conditionally render a message like “No products found”; otherwise, render the product list.

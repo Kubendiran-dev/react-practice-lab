@@ -1,0 +1,81 @@
+Part A:
+
+1. What is useState in React? Why is it used in form handling?
+
+useState is a React hook to store and update data in a component.
+It is used in forms to store input values and control form data.
+
+2.Difference between controlled and uncontrolled components?
+
+Controlled: Form data controlled by React state.
+
+Uncontrolled: Form data controlled by DOM using ref.
+
+
+3.How does localStorage work in React?
+
+It stores data permanently in browser using key–value pairs.
+
+
+4. Why convert objects to JSON before storing in localStorage?
+
+Because localStorage stores only strings, so we convert objects using JSON.stringify().
+
+5.What is HOC? Where is it used?
+
+HOC (Higher Order Component) is a function that returns a new component.
+Used for code reuse, authentication, protected routes.
+
+6.Purpose of React Router DOM?
+
+Used for page navigation & routing in React apps.
+
+7.Why use <Link> instead of <a>?
+
+<Link> prevents page reload and gives faster navigation.
+
+8.Name three array methods used in React?
+
+map() → display list
+
+filter() → remove items
+
+find() → find single item
+
+9.. How does conditional rendering work?
+
+UI changes based on condition using: condition && <Component />
+
+10.Role of useParams?
+
+Used to get URL parameters in routing.
+
+
+Part B:
+
+1.Register Form + Store in localStorage:
+
+const handleRegister = () => {
+  const user = { name, email, password };
+  localStorage.setItem("user", JSON.stringify(user));
+};
+
+2.Login Page Validation:
+
+const stored = JSON.parse(localStorage.getItem("user"));
+
+if(email === stored.email && password === stored.password){
+  alert("Login Success");
+}else{
+  alert("Invalid Login");
+}
+
+3.Protected Route using HOC:
+
+const Protected = (Comp) => {
+  return () => {
+    const auth = localStorage.getItem("login");
+    return auth ? <Comp /> : <Navigate to="/login" />;
+  };
+};
+
