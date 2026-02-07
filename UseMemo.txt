@@ -1,0 +1,45 @@
+1. Purpose of useEffect
+Runs side effects in React (API call, DOM update, event listener, timer) after component renders.
+
+2. Problem useMemo solves
+Avoids expensive recalculation on every render by memoizing computed value.
+
+3. Why use useCallback
+Prevents function recreation on every render → helps stop unnecessary child re-renders.
+
+4. Difference: useEffect vs useMemo
+
+useEffect → for side effects (API, DOM, etc)
+
+useMemo → for memoizing calculated value
+
+5. Difference: useMemo vs useCallback
+
+useMemo → memoizes value
+
+useCallback → memoizes function
+
+6. If no dependency array provided
+Hook runs on every render (repeatedly).
+
+7. When does useMemo recompute?
+Only when dependency changes.
+
+8. How useCallback prevents child re-renders?
+It returns same function reference → child component using React.memo won’t re-render unnecessarily.
+
+9. API calls inside useMemo/useCallback?
+
+Not recommended
+Because they are for pure calculation & memoization, not side effects.
+API calls = side effect → useEffect only.
+
+10. Real-time scenario using all three
+
+E-commerce product page:
+
+useEffect → fetch products from API
+
+useMemo → filter/sort products (expensive calculation)
+
+useCallback → memoize add-to-cart function passed to child product component
